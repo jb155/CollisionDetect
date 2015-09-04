@@ -23,7 +23,7 @@ public class Entity extends Sprite {
 	protected BitSet[] bitSet;
 
 	public float radius;
-	protected Circle circleOuterBound;
+	private Circle circleOuterBound;
 	public boolean useCircleCollision;
 
 	public Entity(MyGdxGame game, float x, float y, int width, int height, float speed, Texture texture, String fileName) {
@@ -35,12 +35,12 @@ public class Entity extends Sprite {
 		this.speed = speed;
 		this.texture = texture;
 
-		radius = width / 2;
+		radius = (float) Math.sqrt(Math.pow(width / 2,2) + Math.pow(height/2,2));
 
-		circleOuterBound = new Circle();
-		circleOuterBound.setCenterX(x);
-		circleOuterBound.setCenterY(y);
-		circleOuterBound.setRadius(radius);
+		setCircleOuterBound(new Circle());
+		getCircleOuterBound().setCenterX(x);
+		getCircleOuterBound().setCenterY(y);
+		getCircleOuterBound().setRadius(radius);
 
 		useCircleCollision = false;
 
@@ -66,7 +66,7 @@ public class Entity extends Sprite {
 
 	//Proof things are happening
 	private void printBitmask() {
-		//System.out.println(texture.);
+		System.out.println("Entity");
 		for (BitSet set : bitSet) {
 			for (int i = 0; i < texture.getWidth(); i++) {
 				if (set.get(i)) {
@@ -118,4 +118,15 @@ public class Entity extends Sprite {
 	}
 
 
+	public Circle getCircleOuterBound() {
+		return circleOuterBound;
+	}
+
+	public void setCircleOuterBound(Circle circleOuterBound) {
+		this.circleOuterBound = circleOuterBound;
+	}
+
+	public void hit(){
+		System.out.println ("Bump");
+	}
 }
