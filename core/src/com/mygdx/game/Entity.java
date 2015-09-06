@@ -49,6 +49,11 @@ public class Entity extends Sprite {
 		printBitmask();
 	}
 
+	//***********************************************************************
+	//getBitMask
+	//Creates a bitmask
+	//Populates it accordingly
+	//***********************************************************************
 	public BitSet[] getBitMask(Pixmap pixmap) {
 		BitSet[] bitmask = new BitSet[pixmap.getHeight()];
 		for (int i = 0; i < bitmask.length; i++) {
@@ -64,7 +69,10 @@ public class Entity extends Sprite {
 		return bitmask;
 	}
 
-	//Proof things are happening
+	//***********************************************************************
+	//printBitmask()
+	//Test to see if the bit mask is generated correctly
+	////***********************************************************************
 	private void printBitmask() {
 		System.out.println("Entity");
 		for (BitSet set : bitSet) {
@@ -127,6 +135,6 @@ public class Entity extends Sprite {
 	}
 
 	public void hit(){
-		System.out.println ("Bump");
+		System.out.println ("Ewww....Somethings is touching me");
 	}
 }

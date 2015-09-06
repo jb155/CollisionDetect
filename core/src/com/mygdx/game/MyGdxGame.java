@@ -21,14 +21,14 @@ public class MyGdxGame extends ApplicationAdapter {
 	// visually x goes down and y across
 	// this will make more sense when you compare it to what is drawn
 	int[][] map = {
-		{1,1,1,1,1,0,0,0,1,1,1,1,1,1,1},
+		{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
-		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
-		{0,0,1,1,0,0,0,0,0,0,0,0,0,0,0},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{1,0,1,1,0,0,0,0,0,0,0,0,0,0,1},
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
 		{1,0,0,0,0,0,0,0,0,0,0,0,0,0,1}, 
 		{1,0,0,0,0,1,1,0,0,0,0,0,0,0,1}, 
@@ -166,6 +166,7 @@ public class MyGdxGame extends ApplicationAdapter {
 			  Vector2 dist = new Vector2(Math.abs(e1.x-e2.x),Math.abs(e1.y-e2.y));
 			  float rad = e1.radius+e2.radius;
 
+			  //Makes sure that it only does pixel collision checks if the bounding circle collides/intersects (a tad more efficient)
 			  if(dist.len()<rad) {
 
 				  int startX = (int) Math.max(newX, e2.x);
